@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import Container from "../components/Container";
+import BreadCrumb from "../components/BreadCrumb";
+import ProductList from "../components/ProductList";
 
 const Product = () => {
   return (
-    <div>Product</div>
-  )
-}
+    <section>
+      <Container>
+        <BreadCrumb currentPageTitle={"Product"} />
+        <ProductList />
+      </Container>
+    </section>
+  );
+};
 
-export default Product
+export default Product;

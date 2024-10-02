@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import Container from "../components/Container";
+import BreadCrumb from "../components/BreadCrumb";
+import VoucherList from "../components/VoucherList";
 
 const Voucher = () => {
   return (
-    <div>Voucher</div>
-  )
-}
+    <section>
+      <Container>
+        <BreadCrumb currentPageTitle={"Voucher"} />
+        <VoucherList />
+      </Container>
+    </section>
+  );
+};
 
-export default Voucher
+export default Voucher;

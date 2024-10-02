@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Container from "../components/Container";
+import BreadCrumb from "../components/BreadCrumb";
 
 const Sale = () => {
   return (
-    <div>Sale</div>
-  )
-}
+    <section>
+      <Container>
+        <BreadCrumb currentPageTitle={"Sale"} />
+      </Container>
+    </section>
+  );
+};
 
-export default Sale
+export default Sale;
