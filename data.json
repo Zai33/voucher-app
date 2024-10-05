@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "product_name": "Laptop Stand",
+      "price": 39.99,
+      "createdAt": "2024-09-28T09:12:00Z"
+    },
+    {
+      "id": 5,
+      "product_name": "Wireless Mouse",
+      "price": 25.99,
+      "createdAt": "2024-10-01T15:47:00Z"
+    },
+    {
+      "product_name": "Smart Thermostat par",
+      "price": "200.99",
+      "createdAt": "2024-10-05T14:47:33.779Z",
+      "id": 6
+    },
+    {
+      "product_name": "orange",
+      "price": "500",
+      "createdAt": "2024-10-04T15:59:43.354Z",
+      "id": 7
+    },
+    {
+      "product_name": "apple",
+      "price": "1000",
+      "createdAt": "2024-10-04T16:00:01.037Z",
+      "id": 8
+    },
+    {
+      "product_name": "orange",
+      "price": "20",
+      "createdAt": "2024-10-05T06:40:43.909Z",
+      "id": 9
+    }
+  ]
+}
