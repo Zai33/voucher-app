@@ -15,21 +15,21 @@ const Dashboard = () => {
           <div className=" col-span-1 row-span-1">
             <ModuleBtn
               name={"Product"}
-              icon={<HiCircleStack size={30} />}
+              icon={<HiCircleStack size={35} />}
               url={"/product"}
             />
           </div>
           <div className=" col-span-1 row-span-1">
             <ModuleBtn
               name={"Sales"}
-              icon={<HiComputerDesktop size={30} />}
+              icon={<HiComputerDesktop size={35} />}
               url={"/sale"}
             />
           </div>
           <div className=" col-span-1 row-span-1">
             <ModuleBtn
               name={"Voucher"}
-              icon={<HiDocumentDuplicate size={30} />}
+              icon={<HiDocumentDuplicate size={35} />}
               url={"/voucher"}
             />
           </div>

@@ -110,9 +110,6 @@ const ProductCreateCard = () => {
             placeholder="Enter Product Name"
             // onChange={handleChange}
           />
-          {/* {errors.productName && (
-            <p className="text-red-500 mt-3">{errors.productName}</p>
-          )} */}
           {errors.product_name?.type === "required" && (
             <p className=" text-red-500 text-sm mt-1">
               Product_Name is required.
@@ -141,7 +138,7 @@ const ProductCreateCard = () => {
             {...register("price", {
               required: true,
               min: 20,
-              max: 1000,
+              max: 10000,
             })}
             type="number"
             className={`bg-gray-50 border ${
@@ -152,9 +149,6 @@ const ProductCreateCard = () => {
             placeholder="Enter Product Price`}
             // onChange={handleChange}
           />
-          {/* {errors.productPrice && (
-            <p className="text-red-500 mt-3">{errors.productPrice}</p>
-          )} */}
           {errors.price?.type === "required" && (
             <p className=" text-red-500 text-sm mt-1">Price is required.</p>
           )}
