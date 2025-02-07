@@ -7,12 +7,6 @@
       "id": 6
     },
     {
-      "product_name": "orange",
-      "price": "500",
-      "createdAt": "2024-10-04T15:59:43.354Z",
-      "id": 7
-    },
-    {
       "product_name": "apple",
       "price": "1000",
       "createdAt": "2024-10-04T16:00:01.037Z",
