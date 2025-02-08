@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { dotSpinner } from "ldrs";
 import SaleForm from "./SaleForm";
 import VoucherTable from "./VoucherTable";
+import useRecordStore from "../store/useRecordStore";
+import toast from "react-hot-toast";
 
 const VoucherInfo = () => {
   const {
@@ -12,9 +13,28 @@ const VoucherInfo = () => {
     formState: { errors },
   } = useForm();
   const [isSending, setIsSending] = useState();
+  const { records, resetRecord } = useRecordStore();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    setIsSending(true);
+    const total = records.reduce((acc, record) => acc + record.cost, 0);
+    const tax = total * 0.05;
+    const netTotal = total + tax;
+    const now = new Date();
+    const time = `${now.getHours()}:${now.getMinutes()}`;
+
+    const currentVoucher = { ...data, records, total, tax, netTotal, time };
+
+    await fetch(import.meta.env.VITE_API_URL + "/vouchers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(currentVoucher),
+    });
+    setIsSending(false);
+    toast.success("Voucher created successfully.");
+    resetRecord();
     reset();
   };
 

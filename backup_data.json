@@ -1,64 +1,135 @@
 {
   "products": [
     {
-      "id": 1,
-      "product_name": "Laptop Stand",
-      "price": 39.99,
-      "timestamp": "2024-09-28T09:12:00Z"
+      "product_name": "Smart Thermostat par",
+      "price": "200.99",
+      "createdAt": "2024-10-05T14:47:33.779Z",
+      "id": 6
     },
     {
-      "id": 2,
-      "product_name": "Ergonomic Chair",
-      "price": 149.99,
-      "timestamp": "2024-09-29T14:35:00Z"
+      "product_name": "apple",
+      "price": "1000",
+      "createdAt": "2024-10-04T16:00:01.037Z",
+      "id": 8
     },
     {
-      "id": 3,
-      "product_name": "LED Desk Lamp",
-      "price": 22.5,
-      "timestamp": "2024-09-30T08:50:00Z"
+      "product_name": "Laptop",
+      "price": "500",
+      "createdAt": "2024-10-15T09:18:27.496Z",
+      "id": 9
     },
     {
-      "id": 4,
-      "product_name": "Noise Cancelling Headphones",
-      "price": 89.99,
-      "timestamp": "2024-10-01T10:23:00Z"
+      "product_name": "Phone",
+      "price": "400",
+      "createdAt": "2024-10-15T09:18:55.028Z",
+      "id": 10
     },
     {
-      "id": 5,
-      "product_name": "Wireless Mouse",
-      "price": 25.99,
-      "timestamp": "2024-10-01T15:47:00Z"
+      "product_name": "Power Bank",
+      "price": "100",
+      "createdAt": "2024-10-15T09:19:11.204Z",
+      "id": 11
     },
     {
-      "id": 6,
-      "product_name": "Smart Thermostat",
-      "price": 199.99,
-      "timestamp": "2024-10-02T12:15:00Z"
+      "product_name": "Mac Book",
+      "price": "1200",
+      "createdAt": "2024-10-15T09:21:33.989Z",
+      "id": 12
     },
     {
-      "id": 7,
-      "product_name": "Tablet",
-      "price": 349.99,
-      "timestamp": "2024-10-02T17:30:00Z"
+      "product_name": "BackEnd Service",
+      "price": "500",
+      "createdAt": "2024-10-15T09:22:21.911Z",
+      "id": 13
+    }
+  ],
+  "vouchers": [
+    {
+      "voucher_id": "YVAIKDI6LP",
+      "customer_name": "Zai",
+      "customer_email": "zai33@gmail.com",
+      "sale_date": "2025-02-08",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1738995664952,
+          "product": {
+            "product_name": "Phone",
+            "price": "400",
+            "createdAt": "2024-10-15T09:18:55.028Z",
+            "id": 10
+          },
+          "quantity": 2,
+          "cost": 800,
+          "created_at": "2025-02-08T06:21:04.952Z"
+        },
+        {
+          "id": 1738995669558,
+          "product": {
+            "product_name": "Power Bank",
+            "price": "100",
+            "createdAt": "2024-10-15T09:19:11.204Z",
+            "id": 11
+          },
+          "quantity": 4,
+          "cost": 400,
+          "created_at": "2025-02-08T06:21:09.558Z"
+        }
+      ],
+      "total": 1200,
+      "tax": 60,
+      "netTotal": 1260,
+      "id": 2
     },
     {
-      "id": 8,
-      "product_name": "Laptop Sleeve",
-      "price": 18.99,
-      "timestamp": "2024-10-03T09:45:00Z"
-    },
-    {
-      "id": 9,
-      "product_name": "USB Desk Fan",
-      "price": 12.99,
-      "timestamp": "2024-10-03T11:00:00Z"
-    },
-    {
-      "id": 10,
-      "product_name": "Standing Desk",
-      "price": 259.99,
-      "timestamp": "2024-10-03T16:20:00Z"
+      "voucher_id": "2ZJTEIERNA",
+      "customer_name": "Heinasdkfjieijfa",
+      "customer_email": "heinksadjfiejkfjasoidfjo@gmail.com",
+      "sale_date": "2025-02-08",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1738997988008,
+          "product": {
+            "product_name": "Laptop",
+            "price": "500",
+            "createdAt": "2024-10-15T09:18:27.496Z",
+            "id": 9
+          },
+          "quantity": 3,
+          "cost": 1500,
+          "created_at": "2025-02-08T06:59:48.008Z"
+        },
+        {
+          "id": 1738997992597,
+          "product": {
+            "product_name": "Phone",
+            "price": "400",
+            "createdAt": "2024-10-15T09:18:55.028Z",
+            "id": 10
+          },
+          "quantity": 4,
+          "cost": 1600,
+          "created_at": "2025-02-08T06:59:52.597Z"
+        },
+        {
+          "id": 1738997997796,
+          "product": {
+            "product_name": "Mac Book",
+            "price": "1200",
+            "createdAt": "2024-10-15T09:21:33.989Z",
+            "id": 12
+          },
+          "quantity": 4,
+          "cost": 4800,
+          "created_at": "2025-02-08T06:59:57.796Z"
+        }
+      ],
+      "total": 7900,
+      "tax": 395,
+      "netTotal": 8295,
+      "time": "13:30",
+      "id": 3
     }
   ]
 }

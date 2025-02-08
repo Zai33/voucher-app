@@ -12,17 +12,25 @@ const SaleForm = () => {
   );
 
   const { register, handleSubmit, reset } = useForm();
-  const { addRecord } = useRecordStore();
+  const { addRecord, updateRecord, records } = useRecordStore();
 
   const onSubmit = (data) => {
     const currentData = JSON.parse(data.product);
-    addRecord({
-      id: Date.now(),
-      product: currentData,
-      quantity: data.quantity,
-      cost: currentData.price * data.quantity,
-      created_at: new Date().toISOString(),
-    });
+    const currentDataId = currentData.id;
+    const isExit = records.find(({ product: { id } }) => id === currentDataId);
+    const quantity = parseInt(data.quantity);
+
+    if (isExit) {
+      updateRecord(isExit.id, quantity);
+    } else {
+      addRecord({
+        id: Date.now(),
+        product: currentData,
+        quantity: quantity,
+        cost: currentData.price * data.quantity,
+        created_at: new Date().toISOString(),
+      });
+    }
 
     reset();
   };

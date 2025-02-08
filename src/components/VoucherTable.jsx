@@ -1,8 +1,12 @@
 import React from "react";
 import useRecordStore from "../store/useRecordStore";
+import VoucherTableRow from "./VoucherTableRow";
 
 const VoucherTable = () => {
   const { records } = useRecordStore();
+  const total = records.reduce((acc, record) => acc + record.cost, 0);
+  const tax = total * 0.05;
+  const netTotal = total + tax;
 
   return (
     <div className=" mt-5">
@@ -10,49 +14,65 @@ const VoucherTable = () => {
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-end">
                 #
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-end">
                 Product Name
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-end">
                 Price
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-end">
                 Quantity
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-end">
                 Cost
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-end">
                 {""}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-bold dark:border-gray-700">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                1
-              </th>
-              <td className="px-6 py-4">Apple Macbook Pro</td>
-              <td className="px-6 py-4">1000</td>
-              <td className="px-6 py-4">0</td>
-              <td className="px-6 py-4">1000</td>
-              <td className="px-6 py-4">{""}</td>
-            </tr>
+            {records.length === 0 && (
+              <tr className="hidden last:table-row dark:bg-gray-800">
+                <td
+                  colSpan={6}
+                  className="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  There is no record. Buy something.
+                </td>
+              </tr>
+            )}
+            {records.map((record, index) => (
+              <VoucherTableRow key={record.id} record={record} index={index} />
+            ))}
           </tbody>
+          <tfoot>
+            <tr className="border-b font-bold dark:border-gray-700">
+              <td className="px-6 py-4 text-end" colSpan={4}>
+                Total
+              </td>
+              <td className="px-6 py-4 text-end">{total.toFixed(2)}</td>
+              <td className="px-6 py-4 text-end"></td>
+            </tr>
+            <tr className="border-b font-bold dark:border-gray-700">
+              <td className="px-6 py-4 text-end" colSpan={4}>
+                Tax ( VAT 5% )
+              </td>
+              <td className="px-6 py-4 text-end">{tax.toFixed(2)}</td>
+              <td className="px-6 py-4 text-end"></td>
+            </tr>
+            <tr className="border-b font-bold dark:border-gray-700">
+              <td className="px-6 py-4 text-end" colSpan={4}>
+                Net Total ( KS )
+              </td>
+              <td className="px-6 py-4 text-end">{netTotal.toFixed(2)}</td>
+              <td className="px-6 py-4 text-end"></td>
+            </tr>
+          </tfoot>
         </table>
-      </div>
-      <div className="p-4 rounded-md shadow-md flex justify-between items-center gap-5">
-        <div className="w-1/2">{/* Content for the first div */}</div>
-        <div className="flex items-center justify-between w-1/2">
-          <p>Total:</p>
-          <p>$ 0</p>
-        </div>
       </div>
     </div>
   );
