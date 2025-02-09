@@ -130,6 +130,44 @@
       "netTotal": 8295,
       "time": "13:30",
       "id": 3
+    },
+    {
+      "voucher_id": "C0KHEYCJYV",
+      "customer_name": "Zai",
+      "customer_email": "kyaw@gmail.com",
+      "sale_date": "2025-02-08",
+      "all_correct": "true",
+      "records": [
+        {
+          "id": 1739026406750,
+          "product": {
+            "product_name": "Phone",
+            "price": "400",
+            "createdAt": "2024-10-15T09:18:55.028Z",
+            "id": 10
+          },
+          "quantity": 10,
+          "cost": 4000,
+          "created_at": "2025-02-08T14:53:26.750Z"
+        },
+        {
+          "id": 1739026416689,
+          "product": {
+            "product_name": "Power Bank",
+            "price": "100",
+            "createdAt": "2024-10-15T09:19:11.204Z",
+            "id": 11
+          },
+          "quantity": 9,
+          "cost": 900,
+          "created_at": "2025-02-08T14:53:36.689Z"
+        }
+      ],
+      "total": 4900,
+      "tax": 245,
+      "netTotal": 5145,
+      "time": "21:23",
+      "id": 4
     }
   ]
 }
