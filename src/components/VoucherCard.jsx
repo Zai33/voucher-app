@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import VoucherRecordsList from "./VoucherRecordsList";
+import printJS from "print-js";
+import html2pdf from "html2pdf.js";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -12,11 +14,36 @@ const VoucherCard = () => {
     fetcher
   );
 
+  const handleToPrint = () => {
+    printJS({
+      printable: "printArea",
+      type: "html",
+      css: "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css",
+    });
+  };
+
+  const handleDownloadPDF = () => {
+    const element = document.getElementById("printArea");
+    html2pdf()
+      .from(element)
+      .set({
+        margin: 10,
+        filename: "voucher.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      })
+      .save();
+  };
+
   if (isLoading) return <div>Loading...</div>;
-  console.log(data);
+
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center p-6">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-3xl">
+    <div className="bg-gray-100 min-h-screen flex flex-col gap-4 items-center justify-center p-6">
+      <div
+        id="printArea"
+        className="bg-white shadow-lg rounded-lg p-6 w-[14.8cm]"
+      >
         <div className="text-center border-b pb-4">
           <h1 className="text-3xl font-bold">COMPANY NAME</h1>
           <p className="text-gray-500">
@@ -27,7 +54,11 @@ const VoucherCard = () => {
         <div className="flex justify-between items-center mt-4">
           <div>
             <h2 className="text-lg font-semibold">INVOICE #</h2>
-            <p className="text-gray-600">{data.voucher_id}</p>
+            <p className="text-gray-600 font-semibold">{data.voucher_id}</p>
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold">DATE</h2>
+            <p className="text-gray-600 font-semibold">{data.sale_date}</p>
           </div>
           <div className="bg-gray-800 text-white px-4 py-2 rounded-md">
             <p className="text-lg font-bold">{`${data.netTotal} KYATS`}</p>
@@ -77,7 +108,7 @@ const VoucherCard = () => {
               817 Cedar Springs Rd, Athens, TN, 37303
             </p>
           </div>
-          <div>
+          <div className="text-right">
             <h3 className="font-semibold">CUSTOMER INFO</h3>
             <p className="text-gray-600 font-semibold">{data.customer_name}</p>
             <p className="text-gray-600 font-semibold">{data.customer_email}</p>
@@ -97,6 +128,20 @@ const VoucherCard = () => {
           </p>
           <p className="text-gray-600">kyawzinwinhtike6@gmail.com</p>
         </div>
+      </div>
+      <div className=" flex gap-4 mt-4">
+        <button
+          onClick={handleToPrint}
+          className=" w-36 py-4 bg-blue-600 rounded-lg shadow-lg text-white font-semibold hover:bg-blue-700 cursor-pointer"
+        >
+          Print
+        </button>
+        <button
+          onClick={handleDownloadPDF}
+          className=" w-36 py-4 bg-blue-600 rounded-lg shadow-lg text-white font-semibold hover:bg-blue-700 cursor-pointer"
+        >
+          Download PDF
+        </button>
       </div>
     </div>
   );
