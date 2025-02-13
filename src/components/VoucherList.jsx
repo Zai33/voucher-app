@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiSearch } from "react-icons/hi";
 import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import useSWR from "swr";
 import VoucherListRow from "./VoucherListRow";
+import { debounce } from "lodash";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 const VoucherList = () => {
+  const [search, setSearch] = useState("");
   const { data, isLoading, isError } = useSWR(
-    import.meta.env.VITE_API_URL + "/vouchers",
+    search
+      ? `${import.meta.env.VITE_API_URL}/vouchers?voucher_id_like=${search}`
+      : `${import.meta.env.VITE_API_URL}/vouchers`,
     fetcher
   );
+
+  const handleSearch = debounce((e) => {
+    setSearch(e.target.value);
+  }, 500);
+
   return (
     <div>
       <div className="mt-4">
@@ -21,6 +30,7 @@ const VoucherList = () => {
                 <HiSearch className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </div>
               <input
+                onChange={handleSearch}
                 type="text"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search Voucher"
@@ -71,14 +81,25 @@ const VoucherList = () => {
                   There is no Voucher.
                 </th>
               </tr>
-              {!isLoading &&
+              {isLoading ? (
+                <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 hidden last:table-row">
+                  <th
+                    colSpan={5}
+                    scope="row"
+                    className="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Loading....
+                  </th>
+                </tr>
+              ) : (
                 data?.map((voucher, index) => (
                   <VoucherListRow
                     key={voucher.id}
                     voucher={voucher}
                     index={index}
                   />
-                ))}
+                ))
+              )}
             </tbody>
           </table>
         </div>
